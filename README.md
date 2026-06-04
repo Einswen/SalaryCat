@@ -138,6 +138,20 @@ python3 -m pip install -r requirements.txt
 python3 main.py
 ```
 
+Record a short video of the project source code being typed into the terminal:
+
+```bash
+python3 code_typewriter.py
+```
+
+Useful recording options:
+
+```bash
+python3 code_typewriter.py main.py gif_loader.py --speed 120
+python3 code_typewriter.py --max-lines 120 --hold 5
+python3 code_typewriter.py --plain --no-line-numbers
+```
+
 Build a standalone binary locally:
 
 ```bash
@@ -155,5 +169,9 @@ py -m PyInstaller --onefile --name tban-cat --add-data "cat.GIF;." --add-data "m
 Check syntax:
 
 ```bash
-python3 -m py_compile audio_player.py gif_loader.py renderer.py main.py
+python3 -m py_compile audio_player.py gif_loader.py renderer.py main.py code_typewriter.py
 ```
+
+## License
+
+Apache License 2.0. See [LICENSE](LICENSE).

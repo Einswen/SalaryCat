@@ -8,6 +8,7 @@ version = "0.1.1"
 description = "A smooth TrueColor terminal GIF player inspired by nyancat."
 readme = "README.md"
 requires-python = ">=3.10"
+license = "Apache-2.0"
 dependencies = [
     "pillow>=10.0.0",
 ]
@@ -21,6 +22,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
     "Topic :: Terminals",
+    "License :: OSI Approved :: Apache Software License",
 ]
 
 [project.optional-dependencies]
@@ -30,6 +32,7 @@ build = [
 
 [project.scripts]
 tban-cat = "main:run"
+tban-code = "code_typewriter:main"
 
 [tool.setuptools]
-py-modules = ["main", "gif_loader", "renderer", "audio_player"]
+py-modules = ["main", "gif_loader", "renderer", "audio_player", "code_typewriter"]
