@@ -1,6 +1,6 @@
 # tban-cat
 
-A TrueColor terminal GIF animation player inspired by classic nyancat.
+# 我真的特别爱你 小猫
 
 It renders `cat.gif` / `cat.GIF` in the terminal, loops the animation, and plays
 `music.mp3` when available.
