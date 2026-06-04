@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tban-cat"
+version = "0.1.0"
+description = "A smooth TrueColor terminal GIF player inspired by nyancat."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pillow>=10.0.0",
+]
+authors = [
+    { name = "tban-cat contributors" },
+]
+keywords = ["terminal", "gif", "nyancat", "ansi", "truecolor"]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Terminals",
+]
+
+[project.scripts]
+tban-cat = "main:run"
+
+[tool.setuptools]
+py-modules = ["main", "gif_loader", "renderer", "audio_player"]
