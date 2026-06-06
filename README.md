@@ -9,7 +9,7 @@ It renders `cat.gif` / `cat.GIF` in the terminal, loops the animation, and plays
 Users do not need to install Python if they download the standalone binaries
 from GitHub Releases:
 
-https://github.com/Einswen/tban-cat/releases
+[https://github.com/Einswen/SalaryCat/releases/]
 
 ### macOS
 
