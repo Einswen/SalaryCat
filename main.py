@@ -80,9 +80,9 @@ def parse_args() -> argparse.Namespace:
         help="Transparent pixel cutoff from 0 to 255. Higher removes more edge ghosts. Default: 200.",
     )
     parser.add_argument(
-        "--solid-block",
+        "--half-block",
         action="store_true",
-        help="Use lower-resolution solid-block rendering. Default is high-resolution half-block rendering.",
+        help="Use higher-resolution half-block rendering. May show horizontal stripes in some terminals.",
     )
     parser.add_argument(
         "--smooth",
@@ -170,7 +170,7 @@ def run() -> int:
         frames = crop_frames_to_content(frames)
     renderer = TerminalRenderer(
         background=BACKGROUND,
-        block_mode="solid" if args.solid_block else "half",
+        block_mode="half" if args.half_block else "solid",
     )
 
     rendered_frames: list[RenderedFrame] = []
