@@ -102,10 +102,16 @@ music.mp3
 The GIF name is case-tolerant for common variants such as `cat.GIF`.
 The music file is optional.
 
+This repository also includes a cute Maltese puppy character animation:
+```text
+maltese.gif
+```
+
 ## Usage
 
 ```bash
 tban-cat
+tban-cat --gif maltese.gif
 tban-cat --fps
 tban-cat --scale 0.8
 tban-cat --margin-rows 1
@@ -155,14 +161,14 @@ Build a standalone binary locally:
 
 ```bash
 python3 -m pip install ".[build]"
-python3 -m PyInstaller --onefile --name tban-cat --add-data "cat.GIF:." --add-data "music.mp3:." main.py
+python3 -m PyInstaller --onefile --name tban-cat --add-data "cat.GIF:." --add-data "maltese.gif:." --add-data "music.mp3:." main.py
 ```
 
 On Windows, use semicolons in `--add-data`:
 
 ```powershell
 py -m pip install ".[build]"
-py -m PyInstaller --onefile --name tban-cat --add-data "cat.GIF;." --add-data "music.mp3;." main.py
+py -m PyInstaller --onefile --name tban-cat --add-data "cat.GIF;." --add-data "maltese.gif;." --add-data "music.mp3;." main.py
 ```
 
 Check syntax:

@@ -9,3 +9,5 @@ dist/
 *.spec
 *.egg-info/
 .DS_Store
+使用说明.txt
+*.bat
