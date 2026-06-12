@@ -16,19 +16,19 @@ from GitHub Releases:
 Apple Silicon Macs:
 
 ```bash
-curl -L -o /tmp/tban-cat https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-macos-arm64 && chmod +x /tmp/tban-cat && /tmp/tban-cat
+curl -L -o /tmp/tban-cat https://github.com/Einswen/SalaryCat/releases/download/v0.1.2/tban-cat-macos-arm64 && chmod +x /tmp/tban-cat && /tmp/tban-cat
 ```
 
 Intel Macs:
 
 ```bash
-curl -L -o /tmp/tban-cat https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-macos-intel && chmod +x /tmp/tban-cat && /tmp/tban-cat
+curl -L -o /tmp/tban-cat https://github.com/Einswen/SalaryCat/releases/download/v0.1.2/tban-cat-macos-intel && chmod +x /tmp/tban-cat && /tmp/tban-cat
 ```
 
 ### Windows
 
 ```powershell
-irm https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-windows.exe -OutFile $env:TEMP\tban-cat.exe; & $env:TEMP\tban-cat.exe
+irm https://github.com/Einswen/SalaryCat/releases/download/v0.1.2/tban-cat-windows.exe -OutFile $env:TEMP\tban-cat.exe; & $env:TEMP\tban-cat.exe
 ```
 
 If macOS Gatekeeper or Windows SmartScreen blocks the file, allow the app once
@@ -39,17 +39,17 @@ One-line examples for different built-in GIFs:
 macOS Apple Silicon:
 
 ```bash
-curl -L -o /tmp/tban-cat https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-macos-arm64 && chmod +x /tmp/tban-cat && /tmp/tban-cat --gif cat.gif
-curl -L -o /tmp/tban-cat https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-macos-arm64 && chmod +x /tmp/tban-cat && /tmp/tban-cat --gif maltese.gif
-curl -L -o /tmp/tban-cat https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-macos-arm64 && chmod +x /tmp/tban-cat && /tmp/tban-cat --gif kuromi
+curl -L -o /tmp/tban-cat https://github.com/Einswen/SalaryCat/releases/download/v0.1.2/tban-cat-macos-arm64 && chmod +x /tmp/tban-cat && /tmp/tban-cat --gif cat.gif
+curl -L -o /tmp/tban-cat https://github.com/Einswen/SalaryCat/releases/download/v0.1.2/tban-cat-macos-arm64 && chmod +x /tmp/tban-cat && /tmp/tban-cat --gif maltese.gif
+curl -L -o /tmp/tban-cat https://github.com/Einswen/SalaryCat/releases/download/v0.1.2/tban-cat-macos-arm64 && chmod +x /tmp/tban-cat && /tmp/tban-cat --gif kuromi
 ```
 
 Windows PowerShell:
 
 ```powershell
-irm https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-windows.exe -OutFile $env:TEMP\tban-cat.exe; & $env:TEMP\tban-cat.exe --gif cat.gif
-irm https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-windows.exe -OutFile $env:TEMP\tban-cat.exe; & $env:TEMP\tban-cat.exe --gif maltese.gif
-irm https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-windows.exe -OutFile $env:TEMP\tban-cat.exe; & $env:TEMP\tban-cat.exe --gif kuromi
+irm https://github.com/Einswen/SalaryCat/releases/download/v0.1.2/tban-cat-windows.exe -OutFile $env:TEMP\tban-cat.exe; & $env:TEMP\tban-cat.exe --gif cat.gif
+irm https://github.com/Einswen/SalaryCat/releases/download/v0.1.2/tban-cat-windows.exe -OutFile $env:TEMP\tban-cat.exe; & $env:TEMP\tban-cat.exe --gif maltese.gif
+irm https://github.com/Einswen/SalaryCat/releases/download/v0.1.2/tban-cat-windows.exe -OutFile $env:TEMP\tban-cat.exe; & $env:TEMP\tban-cat.exe --gif kuromi
 ```
 
 The standalone binaries include the bundled `cat.GIF`, `maltese.gif`,

@@ -46,6 +46,8 @@ jobs:
           --onefile
           --name tban-cat
           --add-data "cat.GIF:."
+          --add-data "maltese.gif:."
+          --add-data "kuromi-1-8.gif:."
           --add-data "music.mp3:."
           main.py
 
@@ -56,6 +58,8 @@ jobs:
           --onefile
           --name tban-cat
           --add-data "cat.GIF;."
+          --add-data "maltese.gif;."
+          --add-data "kuromi-1-8.gif;."
           --add-data "music.mp3;."
           main.py
 
