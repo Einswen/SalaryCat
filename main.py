@@ -22,7 +22,8 @@ from renderer import TerminalRenderer
 LOVE_MESSAGE = "我真的特别爱你"
 BACKGROUND = None
 VERTICAL_MARGIN_ROWS = 1
-DEFAULT_SCALE = 0.85
+DEFAULT_SCALE = 1.0
+DEFAULT_MUSIC = "music.mp3"
 
 
 @dataclass(frozen=True)
@@ -66,7 +67,7 @@ def parse_args() -> argparse.Namespace:
         "--scale",
         type=float,
         default=DEFAULT_SCALE,
-        help="Animation scale from 0.1 to 1.0. Smaller values make block pixels feel finer. Default: 0.85.",
+        help="Animation scale from 0.1 to 1.0. Smaller values make block pixels feel finer. Default: 1.0.",
     )
     parser.add_argument(
         "--no-trim",
@@ -91,15 +92,29 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--music",
-        default="music.mp3",
-        help="MP3 file to play when the animation starts. Default: ./music.mp3.",
+        default=None,
+        help="MP3 file to play when the animation starts. Defaults to music for cat.gif only.",
     )
     parser.add_argument(
         "--no-music",
         action="store_true",
         help="Disable music playback.",
     )
+    parser.add_argument(
+        "--message",
+        default=None,
+        help="Footer message text. Defaults to the love message for cat.gif only.",
+    )
+    parser.add_argument(
+        "--no-message",
+        action="store_true",
+        help="Hide the footer message.",
+    )
     return parser.parse_args()
+
+
+def is_original_cat_gif(gif_path: Path) -> bool:
+    return gif_path.name.lower() == "cat.gif"
 
 
 def prerender_for_terminal(
@@ -179,8 +194,16 @@ def run() -> int:
     frame_index = 0
     next_frame_at = time.perf_counter()
     timestamps: deque[float] = deque(maxlen=120)
-    music_path = resolve_optional_asset(args.music, extra_dirs=(asset_dir,))
-    audio = None if args.no_music else AudioPlayer(music_path)
+    use_cat_defaults = is_original_cat_gif(gif_path)
+    message = ""
+    if not args.no_message:
+        message = args.message if args.message is not None else (LOVE_MESSAGE if use_cat_defaults else "")
+
+    audio = None
+    if not args.no_music and (args.music is not None or use_cat_defaults):
+        music_name = args.music if args.music is not None else DEFAULT_MUSIC
+        music_path = resolve_optional_asset(music_name, extra_dirs=(asset_dir,))
+        audio = AudioPlayer(music_path)
 
     try:
         if audio is not None:
@@ -217,7 +240,7 @@ def run() -> int:
             screen = renderer.compose_screen(
                 frame.lines,
                 image_width,
-                LOVE_MESSAGE,
+                message,
                 show_fps=args.fps,
                 fps=fps,
                 vertical_margin=args.margin_rows,

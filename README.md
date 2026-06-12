@@ -1,8 +1,8 @@
 # Salary Cat (Yuexin Miao)
 
 # 我真的特别爱你 月薪喵 小猫 月薪猫
-It renders `cat.gif` / `cat.GIF` in the terminal, loops the animation, and plays
-`music.mp3` when available.
+It renders terminal GIF animations such as `cat.gif`, `maltese.gif`, and
+`kuromi-1-8.gif`, with smooth ANSI TrueColor playback and optional music.
 
 ## Download without Python
 
@@ -44,9 +44,9 @@ xattr -d com.apple.quarantine ./tban-cat-macos-arm64
 If Windows SmartScreen warns about an unknown app, choose "More info" and then
 "Run anyway".
 
-The standalone binaries include the bundled `cat.GIF` and `music.mp3`. You can
-still place your own `cat.gif` and `music.mp3` in the same folder to override
-them.
+The standalone binaries include the bundled `cat.GIF`, `maltese.gif`,
+`kuromi-1-8.gif`, and `music.mp3`. You can still place your own GIF or
+`music.mp3` in the same folder to override them.
 
 ## Requirements for Python install
 
@@ -102,9 +102,19 @@ music.mp3
 The GIF name is case-tolerant for common variants such as `cat.GIF`.
 The music file is optional.
 
+Default behavior:
+
+- `cat.gif` / `cat.GIF`: plays `music.mp3` and shows the footer love message
+- `maltese.gif`, `kuromi-1-8.gif`, and other GIFs: silent by default and no footer message
+
 This repository also includes a cute Maltese puppy character animation:
 ```text
 maltese.gif
+```
+
+And a Kuromi animation:
+```text
+kuromi-1-8.gif
 ```
 
 ## Usage
@@ -112,12 +122,17 @@ maltese.gif
 ```bash
 tban-cat
 tban-cat --gif maltese.gif
+tban-cat --gif kuromi-1-8.gif
+tban-cat --gif kuromi
 tban-cat --fps
-tban-cat --scale 0.8
+tban-cat --scale 1
 tban-cat --margin-rows 1
 tban-cat --no-music
+tban-cat --message "I love you"
 tban-cat --music music.mp3
 ```
+
+`kuromi` is supported as a short alias for `kuromi-1-8.gif`.
 
 Sharper pixel-art rendering is the default. For smoother scaling:
 
@@ -161,14 +176,14 @@ Build a standalone binary locally:
 
 ```bash
 python3 -m pip install ".[build]"
-python3 -m PyInstaller --onefile --name tban-cat --add-data "cat.GIF:." --add-data "maltese.gif:." --add-data "music.mp3:." main.py
+python3 -m PyInstaller --onefile --name tban-cat --add-data "cat.GIF:." --add-data "maltese.gif:." --add-data "kuromi-1-8.gif:." --add-data "music.mp3:." main.py
 ```
 
 On Windows, use semicolons in `--add-data`:
 
 ```powershell
 py -m pip install ".[build]"
-py -m PyInstaller --onefile --name tban-cat --add-data "cat.GIF;." --add-data "maltese.gif;." --add-data "music.mp3;." main.py
+py -m PyInstaller --onefile --name tban-cat --add-data "cat.GIF;." --add-data "maltese.gif;." --add-data "kuromi-1-8.gif;." --add-data "music.mp3;." main.py
 ```
 
 Check syntax:

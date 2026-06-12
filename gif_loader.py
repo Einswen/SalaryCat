@@ -7,6 +7,22 @@ from typing import Iterable, Sequence
 from PIL import Image, ImageSequence
 
 
+GIF_ALIASES: dict[str, tuple[str, ...]] = {
+    "cat.gif": ("cat.gif", "cat.GIF", "CAT.GIF"),
+    "maltese.gif": ("maltese.gif", "Maltese.gif", "MALTESE.GIF"),
+    "kuromi-1-8.gif": (
+        "kuromi-1-8.gif",
+        "Kuromi-1-8.gif",
+        "KUROMI-1-8.GIF",
+    ),
+    "kuromi": (
+        "kuromi-1-8.gif",
+        "Kuromi-1-8.gif",
+        "KUROMI-1-8.GIF",
+    ),
+}
+
+
 @dataclass(frozen=True)
 class GifFrame:
     image: Image.Image
@@ -21,12 +37,12 @@ def resolve_gif_path(
     if requested.exists():
         return requested
 
-    if requested.name == "cat.gif":
-        for directory in (Path.cwd(), *extra_dirs):
-            for candidate in ("cat.gif", "cat.GIF", "CAT.GIF"):
-                candidate_path = directory / candidate
-                if candidate_path.exists():
-                    return candidate_path
+    candidates = GIF_ALIASES.get(requested.name, (requested.name,))
+    for directory in (Path.cwd(), *extra_dirs):
+        for candidate in candidates:
+            candidate_path = directory / candidate
+            if candidate_path.exists():
+                return candidate_path
 
     raise FileNotFoundError(f"GIF file not found: {requested}")
 
