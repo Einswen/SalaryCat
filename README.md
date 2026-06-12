@@ -13,36 +13,44 @@ from GitHub Releases:
 
 ### macOS
 
-1. Download one file from the latest release:
-   - Apple Silicon Macs: `tban-cat-macos-arm64`
-   - Intel Macs: `tban-cat-macos-intel`
-2. Open Terminal in the download folder.
-3. Rename it or run it directly. Example for Apple Silicon:
+Apple Silicon Macs:
 
 ```bash
-chmod +x ./tban-cat-macos-arm64
-./tban-cat-macos-arm64
+curl -L -o /tmp/tban-cat https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-macos-arm64 && chmod +x /tmp/tban-cat && /tmp/tban-cat
 ```
 
-If macOS Gatekeeper blocks it, run:
+Intel Macs:
 
 ```bash
-xattr -d com.apple.quarantine ./tban-cat-macos-arm64
-./tban-cat-macos-arm64
+curl -L -o /tmp/tban-cat https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-macos-intel && chmod +x /tmp/tban-cat && /tmp/tban-cat
 ```
 
 ### Windows
 
-1. Download `tban-cat-windows.exe` from the latest release.
-2. Open Windows Terminal or PowerShell in the download folder.
-3. Run:
-
 ```powershell
-.\tban-cat-windows.exe
+irm https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-windows.exe -OutFile $env:TEMP\tban-cat.exe; & $env:TEMP\tban-cat.exe
 ```
 
-If Windows SmartScreen warns about an unknown app, choose "More info" and then
-"Run anyway".
+If macOS Gatekeeper or Windows SmartScreen blocks the file, allow the app once
+and run the same command again.
+
+One-line examples for different built-in GIFs:
+
+macOS Apple Silicon:
+
+```bash
+curl -L -o /tmp/tban-cat https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-macos-arm64 && chmod +x /tmp/tban-cat && /tmp/tban-cat --gif cat.gif
+curl -L -o /tmp/tban-cat https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-macos-arm64 && chmod +x /tmp/tban-cat && /tmp/tban-cat --gif maltese.gif
+curl -L -o /tmp/tban-cat https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-macos-arm64 && chmod +x /tmp/tban-cat && /tmp/tban-cat --gif kuromi
+```
+
+Windows PowerShell:
+
+```powershell
+irm https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-windows.exe -OutFile $env:TEMP\tban-cat.exe; & $env:TEMP\tban-cat.exe --gif cat.gif
+irm https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-windows.exe -OutFile $env:TEMP\tban-cat.exe; & $env:TEMP\tban-cat.exe --gif maltese.gif
+irm https://github.com/Einswen/SalaryCat/releases/download/v0.1.1/tban-cat-windows.exe -OutFile $env:TEMP\tban-cat.exe; & $env:TEMP\tban-cat.exe --gif kuromi
+```
 
 The standalone binaries include the bundled `cat.GIF`, `maltese.gif`,
 `kuromi-1-8.gif`, and `music.mp3`. You can still place your own GIF or
@@ -158,20 +166,6 @@ python3 -m pip install -r requirements.txt
 python3 main.py
 ```
 
-Record a short video of the project source code being typed into the terminal:
-
-```bash
-python3 code_typewriter.py
-```
-
-Useful recording options:
-
-```bash
-python3 code_typewriter.py main.py gif_loader.py --speed 120
-python3 code_typewriter.py --max-lines 120 --hold 5
-python3 code_typewriter.py --plain --no-line-numbers
-```
-
 Build a standalone binary locally:
 
 ```bash
@@ -189,7 +183,7 @@ py -m PyInstaller --onefile --name tban-cat --add-data "cat.GIF;." --add-data "m
 Check syntax:
 
 ```bash
-python3 -m py_compile audio_player.py gif_loader.py renderer.py main.py code_typewriter.py
+python3 -m py_compile audio_player.py gif_loader.py renderer.py main.py
 ```
 
 ## License

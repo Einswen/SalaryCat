@@ -32,7 +32,6 @@ build = [
 
 [project.scripts]
 tban-cat = "main:run"
-tban-code = "code_typewriter:main"
 
 [tool.setuptools]
-py-modules = ["main", "gif_loader", "renderer", "audio_player", "code_typewriter"]
+py-modules = ["main", "gif_loader", "renderer", "audio_player"]
